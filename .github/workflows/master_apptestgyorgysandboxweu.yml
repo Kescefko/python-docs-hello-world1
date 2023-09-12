@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       - name: Set up Python version
         uses: actions/setup-python@v1
@@ -53,17 +53,11 @@ jobs:
         with:
           name: python-app
           path: .
-
-      - name: 'Build using AppService-Build'
-        uses: actions/appservice-build@v2
-        with:
-          platform: python
-          platform-version: '3.8'
-      
+          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'apptestgyorgysandboxweu'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E0BF068ED80E4E2A9854742102DA3391 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_54CA75201FFF47F8841A9C4A54184E46 }}
